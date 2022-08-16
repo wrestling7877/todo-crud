@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="todo-crud:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>todo-crud</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="spring-mvc-example-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="todo-crud:war exploded" />
+    </root>
+  </artifact>
+</component>
