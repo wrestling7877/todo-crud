@@ -17,37 +17,38 @@ public class Dao {
     }
 
 
-    public void Save (ToDo toDo){
+    public void Save(ToDo toDo) {
 
         jdbcTemplate.update("insert into todo(startdate,enddate,description)values (?,?,?)",
-                toDo.getStartTime(),
-                toDo.getEndTime(),
+                toDo.getStartdate(),
+                toDo.getEnddate(),
                 toDo.getDescription());
     }
 
-    public List<ToDo>toDoList(){
-        return jdbcTemplate.query("select * from todo",new BeanPropertyRowMapper<>(ToDo.class));
+    public List<ToDo> toDoList() {
+        return jdbcTemplate.query("select * from todo", new BeanPropertyRowMapper<>(ToDo.class));
 
     }
 
 
-    public ToDo getTodoById(Integer id){
+    public ToDo getTodoById(Integer id) {
 
         return jdbcTemplate.query("select * from todo where id = ?",
-                new Object[]{id},new BeanPropertyRowMapper<>(ToDo.class)).stream().findAny().orElse(null);
+                new Object[]{id}, new BeanPropertyRowMapper<>(ToDo.class)).stream().findAny().orElse(null);
     }
 
 
-    public void update(ToDo toDo){
+    public void update(ToDo toDo) {
         jdbcTemplate.update("update todo set startdate=?,enddate=?,description=? where id=?",
-                toDo.getStartTime(),
-                toDo.getEndTime(),
-                toDo.getDescription());
+                toDo.getStartdate(),
+                toDo.getEnddate(),
+                toDo.getDescription(),
+                toDo.getId());
     }
 
 
-    public void delete (Integer id){
-        jdbcTemplate.update("delete from todo where id = ?",id);
+    public void delete(int id){
+        jdbcTemplate.update(" delete from todo where id=?",id);
     }
 
 }
